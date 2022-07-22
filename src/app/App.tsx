@@ -1,8 +1,9 @@
+import { Routes } from "./routes";
 
 export const App = () => {
   return (
     <div className="App">
-      Olá Mundo!
+      <Routes/>
     </div>
   );
 }
