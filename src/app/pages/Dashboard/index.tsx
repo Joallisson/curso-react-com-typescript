@@ -1,6 +1,8 @@
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 
 export const Dashboard = () => {
+
+    const inputPasswordRef = useRef<HTMLInputElement>(null);
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -18,8 +20,6 @@ export const Dashboard = () => {
         return email.length * 1000;
     }, [email.length]);
 
-
-
     const handleEntrar = useCallback(() => {
         console.log(email);
         console.log(password);
@@ -31,12 +31,22 @@ export const Dashboard = () => {
             <form action="">
                 <label htmlFor="">
                     <span>Email</span>
-                    <input value={email} onChange={e => setEmail(e.target.value)} type="email" />
+                    <input 
+                        value={email} 
+                        onChange={e => setEmail(e.target.value)} 
+                        type="email"
+                        onKeyDown={e => e.key === 'Enter' ? inputPasswordRef.current?.focus() : undefined}
+                    />
                 </label>
 
                 <label htmlFor="">
                     <span>Senha</span>
-                    <input onChange={e => setPassword(e.target.value)} value={password} type="password" />
+                    <input
+                        ref={inputPasswordRef}
+                        onChange={e => setPassword(e.target.value)} 
+                        value={password} 
+                        type="password" 
+                    />
                 </label>
 
                 <button onClick={handleEntrar} type="button">Entrar</button>
