@@ -1,16 +1,33 @@
-import { useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 
 export const Dashboard = () => {
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
-    const handleEntrar = () => {
-        console.log(`Email: ${email}   Password: ${password}`);
-    }
+    // useEffect(() => {
+    //     if (window.confirm("Você é homem?")) {
+    //         console.log("Homem");
+    //     } else {
+    //         console.log("Mulher");
+    //     }
+    // }, []);
+
+    const emailLength = useMemo(() => {
+        console.log("Executou");
+        return email.length * 1000;
+    }, [email.length]);
+
+
+
+    const handleEntrar = useCallback(() => {
+        console.log(email);
+        console.log(password);
+    }, [email, password]);
 
     return(
         <div>
+            <p>Quantidade de caracteres no email: {emailLength}</p>
             <form action="">
                 <label htmlFor="">
                     <span>Email</span>
