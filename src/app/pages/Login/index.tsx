@@ -8,14 +8,6 @@ export const Login = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
-    // useEffect(() => {
-    //     if (window.confirm("Você é homem?")) {
-    //         console.log("Homem");
-    //     } else {
-    //         console.log("Mulher");
-    //     }
-    // }, []);
-
     const emailLength = useMemo(() => {
         console.log("Executou");
         return email.length * 1000;
@@ -29,7 +21,7 @@ export const Login = () => {
     return(
         <div>
             <p>Quantidade de caracteres no email: {emailLength}</p>
-            <form action="">
+            <form>
                 
                 <InputLogin
                     label="Email"
@@ -40,9 +32,11 @@ export const Login = () => {
 
                 <InputLogin
                     label="Senha"
-                    value={password}
-                    onChange={newValue => setPassword(newValue)}
                     type="password"
+                    value={password}
+                    ref={inputPasswordRef}
+                    onChange={newValue => setPassword(newValue)}
+                    
                 />
 
                 <button onClick={handleEntrar} type="button">Entrar</button>
