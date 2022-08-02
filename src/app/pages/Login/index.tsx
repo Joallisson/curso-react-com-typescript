@@ -27,7 +27,7 @@ export const Login = () => {
                 <InputLogin
                     label="Email"
                     value={email}
-                    onChange={(newValue) => setEmail(newValue)} //Estou simplesmente passando o setEmail() para o coponente
+                    onChange={(newValue) => setEmail(newValue)} //Estou simplesmente passando o setEmail() para o componente
                     onPressEnter={() => inputPasswordRef.current?.focus()}
                 />
 
